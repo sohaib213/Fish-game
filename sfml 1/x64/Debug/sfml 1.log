@@ -1,0 +1,195 @@
+﻿  Fish.cpp
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,81): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,81): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,81): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,81): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,81): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,81): warning C4244:         and
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,81): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,81): warning C4244:             T=float
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,81): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,51): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,51): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,51): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,51): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,51): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,51): warning C4244:         and
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,51): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,51): warning C4244:             T=float
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(45,51): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(76,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(76,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,65): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,65): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,65): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,65): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,65): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,65): warning C4244:         and
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,65): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,65): warning C4244:             T=float
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,65): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,41): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,41): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,41): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,41): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,41): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,41): warning C4244:         and
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,41): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,41): warning C4244:             T=float
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(126,41): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(154,41): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(154,41): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(154,41): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(154,41): warning C4244:             T=unsigned int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(154,41): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(182,29): warning C4353: nonstandard extension used: constant 0 as function expression.  Use '__noop' function intrinsic instead
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(207,12): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,82): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,82): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,82): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,82): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,82): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,82): warning C4244:         and
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,82): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,82): warning C4244:             T=float
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,82): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,52): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,52): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,52): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,52): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,52): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,52): warning C4244:         and
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,52): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,52): warning C4244:             T=float
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(211,52): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(256,61): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(256,61): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(256,61): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(256,61): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(256,61): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(256,55): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(256,55): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(256,55): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(256,55): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(256,55): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(267,57): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(267,57): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(267,57): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(267,57): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(267,57): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(267,52): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(267,52): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(267,52): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(267,52): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(267,52): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(313,59): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(313,59): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(313,59): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(313,59): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(313,59): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(313,54): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(313,54): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(313,54): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(313,54): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(313,54): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(327,62): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(327,62): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(327,62): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(327,62): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(327,62): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(327,56): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(327,56): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(327,56): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(327,56): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(327,56): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(437,10): warning C4244: 'argument': conversion from '__int64' to 'unsigned int', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(484,26): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(484,17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(490,47): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(490,47): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(490,47): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(490,47): warning C4244:             T=unsigned int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(490,47): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(490,47): warning C4244:         and
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(490,47): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(490,47): warning C4244:             T=float
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(490,47): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,82): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,82): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,82): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,82): warning C4244:             T=float
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,82): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,82): warning C4244:         and
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,82): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,82): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,82): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,47): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,47): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,47): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,47): warning C4244:             T=float
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,47): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,47): warning C4244:         and
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,47): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,47): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(505,47): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,94): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,94): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,94): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,94): warning C4244:             T=float
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,94): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,94): warning C4244:         and
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,94): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,94): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,94): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,51): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,51): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,51): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,51): warning C4244:             T=float
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,51): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,51): warning C4244:         and
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,51): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,51): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(510,51): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,81): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,81): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,81): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,81): warning C4244:             T=float
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,81): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,81): warning C4244:         and
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,81): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,81): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,81): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,61): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,61): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,61): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,61): warning C4244:             T=float
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,61): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,61): warning C4244:         and
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,61): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,61): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(516,61): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,85): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,85): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,85): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,85): warning C4244:             T=float
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,85): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,85): warning C4244:         and
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,85): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,85): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,85): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,61): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,61): warning C4244:         with
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,61): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,61): warning C4244:             T=float
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,61): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,61): warning C4244:         and
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,61): warning C4244:         [
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,61): warning C4244:             T=int
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(523,61): warning C4244:         ]
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(533,28): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(533,14): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(536,15): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\sohaib\Desktop\Project1\sfml 1\sfml 1\Fish.cpp(536,11): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  test game.cpp
+  Generating Code...
+  sfml 1.vcxproj -> C:\Users\sohaib\Desktop\Project1\sfml 1\x64\Debug\sfml 1.exe
