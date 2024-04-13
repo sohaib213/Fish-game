@@ -31,9 +31,47 @@ const int size = 23;
 int gameState = 0;
 int tempState = 0;
 
+// Struct players
+struct player {
+    Sprite Spri;
+    int score;
+    string playerName;
+    int health = 3;
+}players[3];
 
-//function to save history
-void His(RenderWindow& window, int& gameState) {
+
+void saveScore(const player& entry)
+{
+    ofstream file("leaderboard.txt", ios::app);
+    if (file.is_open())
+    {
+        file << entry.playerName << " " << entry.score << endl;
+        file.close();
+    }
+    else
+    {
+        cerr << "Failed to open leaderboard file for writing" << endl;
+    }
+}
+
+vector<player> loadLeaderboard()
+{
+    vector<player> leaderboard;
+    ifstream file("leaderboard.txt");
+    if (file.is_open())
+    {
+        player entry;
+        while (file >> entry.playerName >> entry.score)
+        {
+            leaderboard.push_back(entry);
+        }
+        file.close();
+    }
+    return leaderboard;
+}
+
+void displayLeaderboard(sf::RenderWindow& window, const vector<player>& leaderboard)
+{
     Texture bgTexture;
     bgTexture.loadFromFile("levels.png");
     Sprite bg;
@@ -56,70 +94,31 @@ void His(RenderWindow& window, int& gameState) {
         return;
     }
 
-    ifstream infile("history.txt");
-    if (!infile.is_open()) {
-        cout << "Error: Unable to open history file." << endl;
-        return;
+
+    // Sort the leaderboard based on scores (descending order)
+    vector<player> sortedLeaderboard = leaderboard;
+    sort(sortedLeaderboard.begin(), sortedLeaderboard.end(), [](const player& a, const player& b) {
+        return a.score > b.score;
+        });
+
+    // Display the sorted leaderboard on the bottom right of the camera
+    const int fontSize = 50;
+
+
+    Text leaderboardText("Leaderboard:\n", font, fontSize);
+    leaderboardText.setPosition(450, 50);
+
+    //iritate over each entry
+    for (const auto& entry : sortedLeaderboard)
+    {
+        leaderboardText.setString(leaderboardText.getString() + "\n" + entry.playerName + ":  " + to_string(entry.score) + "\n");
     }
-
-    Text text;
-    text.setFont(font);
-    text.setCharacterSize(40);
-    text.setFillColor(Color::Green);
-
-    float startY = 100.0f;
-    float lineHeight = 50.0f;
-
-    Event event;
-    while (window.isOpen()) {
-        while (window.pollEvent(event)) {
-            if (event.type == Event::Closed) {
-                window.close();
-                return;
-            }
-            else if (event.type == Event::KeyPressed) {
-                if (event.key.code == Keyboard::Escape) {
-                    gameState = 0; // Return to main menu
-                    return;
-                }
-                else if (event.key.code == Keyboard::Up) {
-                    startY += 20; // Scroll up
-                }
-                else if (event.key.code == Keyboard::Down) {
-                    startY -= 20; // Scroll down
-                }
-            }
-        }
-
-        // Clear the window
-        window.clear();
-
-        // Draw the background sprites
-        window.draw(bg);
-        window.draw(bg2);
-
-        // Reset startY for repositioning the text
-        float currentY = startY;
-
-        // Reset the file stream to the beginning
-        infile.clear();
-        infile.seekg(0, ios::beg);
-
-        // Read and draw text from the file
-        string line;
-        while (getline(infile, line, '*')) {
-            text.setString(line);
-            text.setPosition(50.0f, currentY);
-            window.draw(text);
-            currentY += lineHeight;
-        }
-
-        // Display the window contents
-        window.display();
-    }
-
-    infile.close();
+    // Draw the background sprites
+    window.draw(bg);
+    window.draw(bg2);
+    window.draw(leaderboardText);
 }
+
 
 
 
@@ -296,12 +295,6 @@ int score = 0;
 int hb_score = 0;
 
 
-// Struct players
-struct player {
-    Sprite Spri;
-    int score = 0;
-    int health = 3;
-}players[3];
 
 
 // Functions------------------------------------------------------------------------------------------------------
@@ -630,7 +623,7 @@ void MoveStars_SmallStars_Sparks()
     }
 }
 
-void EatStars(player &p, vector<int>& count, bool& E, bool& EB, int dix, int& scoreNumber, float OnFire1Score, int& starsNumberEaten)
+void EatStars(player& p, vector<int>& count, bool& E, bool& EB, int dix, int& scoreNumber, float OnFire1Score, int& starsNumberEaten)
 {
     for (int i = 0; i < stars.size(); i++)
     {
@@ -869,8 +862,15 @@ int main() {
     if (!font.loadFromFile("SuperMario256.ttf")) {
         return EXIT_FAILURE;
     }
-
     string name;
+
+    vector<player> leaderboard = loadLeaderboard();
+    //leaderBoard
+    Text leaderboardText("", font, 20);
+    leaderboardText.setFillColor(Color::White);
+    leaderboardText.setPosition(10, 10); // Adjust position
+    Text scoreText("Score: 0", font, 20);
+    scoreText.setFillColor(Color::White);
 
     Texture textures[23];
     textures[0].loadFromFile("menu1.png");
@@ -1439,6 +1439,28 @@ int main() {
     // Time
     int resultTime = 0;
 
+    // Continue Button
+    Sprite ContinueUnSelcted;
+    ContinueUnSelcted.setTexture(textures[12]);
+    ContinueUnSelcted.setOrigin(ContinueUnSelcted.getGlobalBounds().width / 2, ContinueUnSelcted.getGlobalBounds().height / 2);
+    ContinueUnSelcted.setPosition(634, 842);
+    ContinueUnSelcted.setScale(2, 2);
+
+    Sprite ContinueSelcted;
+    ContinueSelcted.setTexture(textures[6]);
+    ContinueSelcted.setOrigin(ContinueSelcted.getGlobalBounds().width / 2, ContinueSelcted.getGlobalBounds().height / 2);
+    ContinueSelcted.setPosition(634, 842);
+    ContinueSelcted.setScale(2, 2);
+    bool ContinueSelctedCheck = 0;
+
+    Text conutinueText;
+    conutinueText.setFont(fontOnfire);
+    conutinueText.setString("CONTINUE");
+    conutinueText.setOrigin(conutinueText.getGlobalBounds().width / 2, conutinueText.getGlobalBounds().height / 2);
+    conutinueText.setPosition(605, 830);
+    conutinueText.setFillColor(Color::Black);
+    conutinueText.setCharacterSize(44);
+
 
 
     // Abdo Declarations ==================================================================================
@@ -1641,7 +1663,10 @@ int main() {
                 Pname(window, name);
             }
             if (gameState == 2) {
-                His(window, gameState);
+                if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+                    gameState = 0;
+                }
+
             }
             //show levels
             if (gameState == 4)
@@ -1753,17 +1778,25 @@ int main() {
                     b10l = 1;
                     setSelected(exitButton, true);
                 }
-                if (b10l == 1 && Mouse::isButtonPressed(Mouse::Left))
+                if (b10l == 1 && Mouse::isButtonPressed(Mouse::Left)) {
+                    // Quit the game
+                    // Save the current score before quitting
+                    player currentPlayerScore;
+                    currentPlayerScore.playerName = name; // You can customize this based on user input
+                    currentPlayerScore.score = players[0].score;
+                    saveScore(currentPlayerScore);
                     window.close();
+                }
+
             }
             window.setMouseCursorVisible(true);
         }
 
         // Game logic
-        if (gameState == 5)
+        if (gameState == 5 || gameState == 6 || gameState == 7)
         {
             tempState = 5;
-            if (1)  // Still in game condition
+            if (f1NumberEaten < 10)  // Still in game condition
             {
                 // Make mouse unvisible
                 window.setMouseCursorVisible(false);
@@ -1800,10 +1833,21 @@ int main() {
 
                 velocity_x(dix, c, mPxc, mPxp, vmx, vx);
 
-                if (dix == 1 && c == 1)
-                    players[0].Spri.setTextureRect(IntRect(125 + (int)x * 126, 214, -pwi1, phe1));
-                else if (dix == -1 && c == 1)
-                    players[0].Spri.setTextureRect(IntRect(3 + (int)x * 126, 214, pwi1, phe1));
+                // Movement animation
+                if (gameState == 5)           // player 1 animation
+                {
+                    if (dix == 1 && c == 1)
+                        players[0].Spri.setTextureRect(IntRect(125 + (int)x * 126, 214, -pwi1, phe1));
+                    else if (dix == -1 && c == 1)
+                        players[0].Spri.setTextureRect(IntRect(3 + (int)x * 126, 214, pwi1, phe1));
+                }
+                else if (gameState == 7)     // player 3 animation
+                {
+                    if (dix == 1 && c == 1)
+                        players[2].Spri.setTextureRect(IntRect(188 + (int)x * (3016 / 15), 376, -pwi3, phe3));
+                    else if (dix == -1 && c == 1)
+                        players[2].Spri.setTextureRect(IntRect(3 + (int)x * (3016 / 15), 376, pwi3, phe3));
+                }
 
 
                 // Y
@@ -1827,7 +1871,10 @@ int main() {
                     else
                     {
                         xr += 0.3;
-                        players[0].Spri.setTextureRect(IntRect(3 + (int)xr * 126, 320, pwi1, phe1));
+                        if (gameState == 5)
+                            players[0].Spri.setTextureRect(IntRect(3 + (int)xr * 126, 320, pwi1, phe1));
+                        else if (gameState == 7)
+                            players[2].Spri.setTextureRect(IntRect(3 + (int)xr * 201, 546, pwi3, phe3));
                     }
 
                 }
@@ -1841,18 +1888,21 @@ int main() {
                     else
                     {
                         xl += 0.3;
-                        players[0].Spri.setTextureRect(IntRect(124 + (int)xl * 126, 320, -pwi1, phe1));
+                        if (gameState == 5)
+                            players[0].Spri.setTextureRect(IntRect(124 + (int)xl * 126, 320, -pwi1, phe1));
+                        else if (gameState == 7)
+                            players[2].Spri.setTextureRect(IntRect(188 + (int)xl * 201, 546, -pwi3, phe3));
                     }
                 }
 
 
                 // Turbo
-                if(mt1 > 100)
-                Turbo(vx, vy);
+                if (mt1 > 100)
+                    Turbo(vx, vy);
                 mt1++;
 
                 // Collision with window
-                CollisionWithWindow(players[0].Spri, window, view);
+                CollisionWithWindow(players[gameState - 5].Spri, window, view);
 
 
                 // Collision with fish
@@ -1863,11 +1913,17 @@ int main() {
                     {
                         if (dix == -1)
                         {
-                            players[0].Spri.setTextureRect(IntRect(2 + (int)eT * 126, 2, 122, 104));
+                            if (gameState == 5)
+                                players[gameState - 5].Spri.setTextureRect(IntRect(2 + (int)eT * 126, 2, 122, 104));
+                            else if (gameState == 7)
+                                players[gameState - 5].Spri.setTextureRect(IntRect(10 + (int)eT * 200, 1, pwi3, 180));
                         }
                         else if (dix == 1)
                         {
-                            players[0].Spri.setTextureRect(IntRect(125 + (int)eT * 126, 2, -122, 104));
+                            if (gameState == 5)
+                                players[gameState - 5].Spri.setTextureRect(IntRect(125 + (int)eT * 126, 2, -122, 104));
+                            else if (gameState == 7)
+                                players[gameState - 5].Spri.setTextureRect(IntRect(188 + (int)eT * (3016 / 15), 1, -pwi3, 180));
                         }
                         eT += 0.3;
                     }
@@ -1878,7 +1934,7 @@ int main() {
                     }
                 }
 
-                makeBubblesWhenEating(players[0].Spri, playerP, EB, bubbsT, dix);
+                makeBubblesWhenEating(players[gameState - 5].Spri, playerP, EB, bubbsT, dix);
 
 
                 // Bubbles In Back----------------------------------------------------
@@ -1918,14 +1974,14 @@ int main() {
 
 
                 // Eat Stars
-                EatStars(players[0], count, EatingCheck, EB, dix, scoreNumber, OnFire1Score, starsNumberEaten);
+                EatStars(players[gameState - 5], count, EatingCheck, EB, dix, scoreNumber, OnFire1Score, starsNumberEaten);
 
 
                 //f1----------------------------------------------------------------------
                 for (int i = 0; i < a.size(); i++)
                 {
                     // collision with player
-                    if (players[0].Spri.getGlobalBounds().intersects(a[i].getGlobalBounds()))
+                    if (players[gameState - 5].Spri.getGlobalBounds().intersects(a[i].getGlobalBounds()))
                     {
                         EatingCheck = 1;
                         if (OnFire1Score + 0.2 < 4)
@@ -1938,7 +1994,7 @@ int main() {
                         a[i].setScale(0, 0);
                         b1.play();
                         scoreNumber = 10;
-                        ScoreEffectCreate(dix, players[0].Spri, OnFire1Score, scoreNumber);
+                        ScoreEffectCreate(dix, players[gameState - 5].Spri, OnFire1Score, scoreNumber);
                         f1NumberEaten++;
                         players[0].score += scoreNumber * (int)OnFire1Score;
                         hb_score += scoreNumber;
@@ -1960,7 +2016,7 @@ int main() {
 
 
                 // OnFire Effects
-                OnFire(OnFire1Score, OnFire1ScorePrev, c1, c2, players[0].Spri, OnFire1Check, OnFire1Timer);
+                OnFire(OnFire1Score, OnFire1ScorePrev, c1, c2, players[gameState - 5].Spri, OnFire1Check, OnFire1Timer);
 
                 OnFire1ScorePrev = OnFire1Score;
 
@@ -1977,14 +2033,14 @@ int main() {
 
 
                 // Moving view
-                VIEW(players[0].Spri, vx, vy, ro, ro2, coral1, coral2, coral3);
+                VIEW(players[gameState - 5].Spri, vx, vy, ro, ro2, coral1, coral2, coral3);
 
 
-                SCORE_0.setString("" + to_string(players[0].score));
+                SCORE_0.setString("" + to_string(players[gameState - 5].score));
                 hb.setSize(Vector2f((float)hb_score / 30 * 5.f, 15.f));
 
                 // Final velocity of the player
-                players[0].Spri.move(vx + turboVelocity.x, vy + turboVelocity.y);
+                players[gameState - 5].Spri.move(vx + turboVelocity.x, vy + turboVelocity.y);
 
 
                 mPxp = mPxc;
@@ -2005,7 +2061,7 @@ int main() {
                 SorryDisplay(music1);
                 SorryTime++;
             }
-            if (0) // End Game condition
+            if (f1NumberEaten >= 10) // End Game condition
             {
                 numbersEatenText[0].setString(to_string(f1NumberEaten));
                 numbersEatenText[1].setString(to_string(f2NumberEaten));
@@ -2047,266 +2103,30 @@ int main() {
                     b1.play();
                 }
                 Chomp.move(0, -0.5);
+                if (ContinueUnSelcted.getGlobalBounds().intersects(mouse.getGlobalBounds()))
+                {
+                    ContinueSelctedCheck = 1;
+                    if (Mouse::isButtonPressed(Mouse::Left))
+                        gameState = 4;
+                }
+                else
+                    ContinueSelctedCheck = 0;
             }
 
-            //if (players[0].score == 1000 || players[0].health == 0) {
-            //    ofstream offile;
-            //    offile.open("history.txt", ios::app);
-            //    offile << name << "        " << players[0].score << "*" << endl;
-            //    players[0].score = 0;
-            //    players[0].health = 3;
-            //    gameState = 0;
-            // }
+            if (f1NumberEaten == 10 && resultTime == 1) {
+                ofstream offile;
+                offile.open("history.txt", ios::app);
+                offile << name << "        " << players[0].score << "*" << endl;
+                players[gameState - 5].score = 0;
+                players[gameState - 5].health = 3;
+            }
 
 
         }
         if (gameState == 6) {
             tempState = 6;
         }
-        if (gameState == 7) {
-            tempState = 7;
-            // Make mouse unvisible
-            window.setMouseCursorVisible(false);
 
-            // delta time
-            dt = clock.restart().asSeconds();
-
-
-            // Music
-            mt += dt;
-            if (mt >= 72)
-            {
-                music1.play();
-                mt = 0;
-            }
-
-
-            x += 0.09;
-            if (x >= 15)
-                x = 0;
-
-            Vector2f mousePosition(Mouse::getPosition(window).x, Mouse::getPosition(window).y);
-
-
-
-            mPxc = mousePosition.x;
-            mPyc = mousePosition.y;
-
-
-            direction(mPxc, mPxp, mPyc, mPyp, c, dix, diy, Tr, Tl);
-
-
-            // Moving
-            // X
-
-            velocity_x(dix, c, mPxc, mPxp, vmx, vx);
-
-            if (dix == 1 && c == 1)
-                players[2].Spri.setTextureRect(IntRect(188 + (int)x * (3016 / 15), 376, -pwi3, phe3));
-            else if (dix == -1 && c == 1)
-                players[2].Spri.setTextureRect(IntRect(3 + (int)x * (3016 / 15), 376, pwi3, phe3));
-
-
-            // Y
-
-            velocity_x(diy, c, mPyc, mPyp, vmy, vy);
-
-            // Limit Velocity
-            limitV(vx, vy, vmx);
-
-
-
-
-
-
-            // Perform a Turn
-            if (Tr == 1)
-            {
-                if (xr > 4)
-                {
-                    xr = 0;
-                    Tr = 0;
-                }
-                else
-                {
-                    xr += 0.3;
-                    players[2].Spri.setTextureRect(IntRect(3 + (int)xr * 201, 546, pwi3, phe3));
-                }
-
-            }
-            if (Tl == 1)
-            {
-                if (xl > 4)
-                {
-                    xl = 0;
-                    Tl = 0;
-                }
-                else
-                {
-                    xl += 0.3;
-                    players[2].Spri.setTextureRect(IntRect(188 + (int)xl * 201, 546, -pwi3, phe3));
-                }
-            }
-
-
-            // Turbo
-            if(mt > 10)
-              Turbo(vx, vy);
-
-            // Collision with window
-            CollisionWithWindow(players[2].Spri, window, view);
-
-
-            // Collision with fish
-            if (EatingCheck == 1)
-            {
-                // eating animation
-                if (eT <= 6)
-                {
-                    if (dix == -1)
-                    {
-                        players[2].Spri.setTextureRect(IntRect(10 + (int)eT * 200, 1, pwi3, 180));
-                    }
-                    else if (dix == 1)
-                    {
-                        players[2].Spri.setTextureRect(IntRect(188 + (int)eT * (3016 / 15), 1, -pwi3, 180));
-                    }
-                    eT += 0.3;
-                }
-                else
-                {
-                    EatingCheck = 0;
-                    eT = 0;
-                }
-            }
-
-            makeBubblesWhenEating(players[2].Spri, playerP, EB, bubbsT, dix);
-
-
-            // Bubbles In Back----------------------------------------------------
-            Ti++;
-            if (Ti == 60)
-            {
-                Ti = 0;
-                bubble2.setPosition(rand() % windowWidth, rand() % windowHeight);
-                BubblesInBack.push_back(bubble2);
-                bubbleScale.push_back(0.6);
-            }
-
-            for (int i = 0; i < BubblesInBack.size(); i++)
-            {
-                BubblesInBack[i].move(-1, 0);
-                BubblesInBack[i].setScale(bubbleScale[i], bubbleScale[i]);
-                bubbleScale[i] -= 0.003;
-                if (bubbleScale[i] < 0.3)
-                    bubbleScale[i] = 0;
-            }
-
-            // Stars---------------------------------------------------------------
-
-                // Create Stars
-            CreateStars(count);
-
-            // Create small Stars to Each Big Star
-            CreateSmallStars(count);
-
-            // Create Sparks to Each Big Star
-            CreateSparks();
-
-            // Move Stars
-            // move Small Stars
-            // move Sparks
-            MoveStars_SmallStars_Sparks();
-
-
-            // Eat Stars
-            EatStars(players[2], count, EatingCheck, EB, dix, scoreNumber, OnFire1Score, starsNumberEaten);
-
-
-            //f1----------------------------------------------------------------------
-            for (int i = 0; i < a.size(); i++)
-            {
-                // collision with player
-                if (players[2].Spri.getGlobalBounds().intersects(a[i].getGlobalBounds()))
-                {
-                    EatingCheck = 1;
-                    if (OnFire1Score + 0.2 < 4)
-                        OnFire1Score += 0.2;
-                    if (EB == 1)
-                        bubbsT = 0;
-
-                    EB = 1;
-
-                    a[i].setScale(0, 0);
-                    b1.play();
-                    scoreNumber = 10;
-                    ScoreEffectCreate(dix, players[2].Spri, OnFire1Score, scoreNumber);
-                    f1NumberEaten++;
-                    players[2].score += scoreNumber * (int)OnFire1Score;
-                    hb_score += scoreNumber;
-                }
-
-                if (spwanT[i] >= 60)
-                {
-                    Vx[i] = ((rand() % 21) - 10) / 5.f;
-                    Vy[i] = ((rand() % 21) - 10) / 5.f;
-                    spwanT[i] = 0;
-                }
-                a[i].move(Vx[i], Vy[i]);
-            }
-            for (int i = 0; i < fN; i++)
-            {
-                spwanT[i]++;
-            }
-
-
-
-            // OnFire Effects
-            OnFire(OnFire1Score, OnFire1ScorePrev, c1, c2, players[2].Spri, OnFire1Check, OnFire1Timer);
-
-            OnFire1ScorePrev = OnFire1Score;
-
-            // Score effect
-            ScoreEffectControl(window);
-
-
-            c = 1;
-
-            // keep mouse in window
-            KeepMouseInWindow(mousePosition, window, windowPo, c, mPyc, mPxc);
-
-            //Vectory Effect
-           if (0)
-           {
-           	winingTime++;
-           	PerfectDisplay(music1);
-           	PerfectTime++;
-           }
-
-           // Losing Effect
-           if (0)
-           {
-           	LosingTime++;
-           	SorryDisplay(music1);
-           	SorryTime++;
-           }
-
-           // Moving view
-           VIEW(players[2].Spri, vx, vy, ro, ro2, coral1, coral2, coral3);
-
-
-           SCORE_0.setString("" + to_string(players[2].score));
-           hb.setSize(Vector2f((float)hb_score / 30 * 5.f, 15.f));
-
-           // Final velocity of the player
-           players[2].Spri.move(vx + turboVelocity.x, vy + turboVelocity.y);
-
-
-
-
-            mPxp = mPxc;
-            mPyp = mPyc;
-        }
 
         window.clear();
 
@@ -2372,9 +2192,8 @@ int main() {
         }
         else if (gameState == 5)
         { // Draw the game
-            window.draw(Pbutton);
 
-            if (1)  // Still in game condition
+            if (f1NumberEaten < 10)  // Still in game condition
             {
                 window.setView(view);
                 window.draw(b);
@@ -2484,101 +2303,137 @@ int main() {
                 window.draw(stageCompleted);
                 if (resultTime < 150)
                     window.draw(Chomp);
+                if (ContinueSelctedCheck == 0)
+                    window.draw(ContinueUnSelcted);
+                else
+                    window.draw(ContinueSelcted);
+                window.draw(conutinueText);
             }
+            window.draw(Pbutton);
+
         }
         else if (gameState == 6) {
             window.draw(Pbutton);
         }
-        else if (gameState == 7) {
-            window.draw(Pbutton);
-            window.setView(view);
-            window.draw(b);
-            window.draw(coral4);
-            window.draw(shrub);
-            window.draw(coral1);
-            window.draw(coral2);
-            window.draw(ro);
-            window.draw(ro2);
-            window.draw(coral3);
-
-
-            window.draw(players[2].Spri);
-
-            for (int i = 0; i < a.size(); i++)
+        else if (gameState == 7)
+        {
+            if (f1NumberEaten < 10)  // Still in game condition
             {
-                window.draw(a[i]);
-            }
+                window.setView(view);
+                window.draw(b);
+                window.draw(coral4);
+                window.draw(shrub);
+                window.draw(coral1);
+                window.draw(coral2);
+                window.draw(ro);
+                window.draw(ro2);
+                window.draw(coral3);
 
-            if (EB == 1)
+
+                window.draw(players[2].Spri);
+
+                for (int i = 0; i < a.size(); i++)
+                {
+                    window.draw(a[i]);
+                }
+
+                if (EB == 1)
+                    for (int i = 0; i < 5; i++)
+                        window.draw(bubbles[i]);
+                for (int i = 0; i < BubblesInBack.size(); i++)
+                {
+                    window.draw(BubblesInBack[i]);
+                }
+                if (OnFire1Check == 1)
+                    window.draw(Yum);
+                if (OnFire1Check == 1)
+                    window.draw(Gulb);
+
+
+                for (int i = 0; i < stars.size(); i++)
+                    window.draw(stars[i]);
+
+                for (int i = 0; i < smallStars.size(); i++)
+                    window.draw(smallStars[i]);
+
+                for (int i = 0; i < sparks1.size(); i++)
+                    window.draw(sparks1[i]);
+
+
+                window.setView(window.getDefaultView());
+                // Abdo Draw ----------------------------
+                window.draw(rectangle);
+                window.draw(line);
+                window.draw(line_GROWTH);
+                window.draw(line_ABILITY);
+                window.draw(triangle);
+                window.draw(triangle2);
+                for (int i = 0; i < 4; i++)
+                    window.draw(tab[i]);
+                window.draw(sprite1);
+                window.draw(sprite2);
+                window.draw(sprite3);
+                window.draw(menu);
+                window.draw(GROWTH);
+                window.draw(SCORE);
+                window.draw(SCORE_0);
+                window.draw(ABILTY);
+                window.draw(Bub);
+                window.draw(Bub2);
+                window.draw(Doublect);
+                window.draw(Doublect2);
+                window.draw(triple_tab);
+                window.draw(hb);
+
+
+                // ---------------------------------------
+
+                window.draw(OnFireText);
+                for (int i = 0; i < T1.size(); i++)
+                {
+                    window.draw(T1[i]);
+                }
+
+                for (int i = 0; i < 7; i++)
+                {
+                    window.draw(Perfect[i]);
+                    window.draw(Bubs[i]);
+
+                }
                 for (int i = 0; i < 5; i++)
-                    window.draw(bubbles[i]);
-            for (int i = 0; i < BubblesInBack.size(); i++)
-            {
-                window.draw(BubblesInBack[i]);
+                {
+                    window.draw(Sorry[i]);
+                    window.draw(Bubs1[i]);
+
+                }
             }
-            if (OnFire1Check == 1)
-                window.draw(Yum);
-            if (OnFire1Check == 1)
-                window.draw(Gulb);
-
-
-            for (int i = 0; i < stars.size(); i++)
-                window.draw(stars[i]);
-
-            for (int i = 0; i < smallStars.size(); i++)
-                window.draw(smallStars[i]);
-
-            for (int i = 0; i < sparks1.size(); i++)
-                window.draw(sparks1[i]);
-
-
-            window.setView(window.getDefaultView());
-            // Abdo Draw ----------------------------
-            window.draw(rectangle);
-            window.draw(line);
-            window.draw(line_GROWTH);
-            window.draw(line_ABILITY);
-            window.draw(triangle);
-            window.draw(triangle2);
-            for (int i = 0; i < 4; i++)
-                window.draw(tab[i]);
-            window.draw(sprite1);
-            window.draw(sprite2);
-            window.draw(sprite3);
-            window.draw(menu);
-            window.draw(GROWTH);
-            window.draw(SCORE);
-            window.draw(SCORE_0);
-            window.draw(ABILTY);
-            window.draw(Bub);
-            window.draw(Bub2);
-            window.draw(Doublect);
-            window.draw(Doublect2);
-            window.draw(triple_tab);
-            window.draw(hb);
-
-
-            // ---------------------------------------
-
-            window.draw(OnFireText);
-            for (int i = 0; i < T1.size(); i++)
+            else
             {
-                window.draw(T1[i]);
+                window.setView(window.getDefaultView());
+                b.setPosition(0, 0);
+                window.draw(b);
+                window.draw(resultBoard);
+                window.draw(Title);
+                for (int i = 0; i < 3; i++)
+                {
+                    window.draw(enemeisBoard[i]);
+                }
+                window.draw(starBoard);
+                for (int i = 0; i < 3; i++)
+                {
+                    window.draw(numbersEatenText[i]);
+                }
+                window.draw(numberStarsEatenText);
+                window.draw(stageCompleted);
+                if (resultTime < 150)
+                    window.draw(Chomp);
+                if (ContinueSelctedCheck == 0)
+                    window.draw(ContinueUnSelcted);
+                else
+                    window.draw(ContinueSelcted);
+                window.draw(conutinueText);
             }
-
-            for (int i = 0; i < 7; i++)
-            {
-                window.draw(Perfect[i]);
-                window.draw(Bubs[i]);
-
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                window.draw(Sorry[i]);
-                window.draw(Bubs1[i]);
-
-            }
-
+            window.draw(Pbutton);
         }
         else if (gameState == 8)
         { // Draw the pause menu
