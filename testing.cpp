@@ -2163,6 +2163,7 @@ int main() {
                 window.draw(sprites[19]);
         }
         else if (gameState == 2) {
+            displayLeaderboard(window, leaderboard);
         }
         else if (gameState == 3) {
         }
